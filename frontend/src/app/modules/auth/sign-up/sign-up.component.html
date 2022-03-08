@@ -1,0 +1,92 @@
+<div class="padding"></div>
+
+<div class="sign-up-form">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="jumbotron py-3">
+            <h1 class="display-4 text-center"> SIGN UP</h1>
+        </div>
+
+        <div class="form-group">
+            <input type="text" formControlName="fName" [ngClass]="{ 'is-invalid': submitted && f['fName'].errors }"
+                placeholder="First Name"/>
+            <div *ngIf="submitted && f['fName'].errors" class="invalid-feedback">
+                <div *ngIf="f['fName'].errors['required']">First Name is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" formControlName="lName" [ngClass]="{ 'is-invalid': submitted && f['lName'].errors }"
+                placeholder="Last Name"/>
+            <div *ngIf="submitted && f['lName'].errors" class="invalid-feedback">
+                <div *ngIf="f['lName'].errors['required']">First Name is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                placeholder="Email" />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" formControlName="pNumber" placeholder="Phone Number"
+                [ngClass]="{ 'is-invalid': submitted && f['pNumber'].errors }"/>
+            <div *ngIf="submitted && f['pNumber'].errors" class="invalid-feedback">
+                <div *ngIf="f['pNumber'].errors['required']">Phone number is required</div>
+                <div *ngIf="f['pNumber'].errors['pattern'] || f['pNumber'].errors['maxlength'] 
+            || f['pNumber'].errors['minlength']">Phone number must be at least 8 numbers</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="password" formControlName="password" placeholder="Password"
+                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"  />
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                <div *ngIf="f['password'].errors['minlength']">
+                    Password must be at least 6 charactesrs
+                </div>
+                <div *ngIf="f['password'].errors['maxlength']">
+                    Username must not exceed 40 characters
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password"
+                [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }" />
+            <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+                <div *ngIf="f['confirmPassword'].errors['required']">
+                    Confirm Password is required
+                </div>
+                <div *ngIf="f['confirmPassword'].errors['matching']">
+                    Confirm Password does not match
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" formControlName="acceptTerms"
+                [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }" />
+            <label for="acceptTerms" class="form-check-label">I have read and agree to the Terms</label>
+            <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+                Accept Terms is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-danger btn-block" type="submit" value="REGISTER NOW">
+        </div>
+
+        <div class="padding-small"></div>
+
+    </form>
+</div>
+
+
+<div class="padding-medium"></div>

@@ -1,0 +1,32 @@
+/************************************************** Header**************************************************/
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.logo h4{
+    font-style: bold;
+}
+
+.auth .sign-up{ 
+    color: #fff;
+    background-color: #247f9e;
+    font-size: 14px;
+    margin: 0 8px;
+    border: 0.0625rem solid #247f9e;
+    padding: 7px 10px;
+}
+
+.auth .sign-in{ 
+    color: #2d333f;
+    background-color: transparent;
+    border: 0.0625rem solid #d8d9db;
+    font-size: 14px;
+    margin: 0;
+    padding: 7px 10px;
+}
+

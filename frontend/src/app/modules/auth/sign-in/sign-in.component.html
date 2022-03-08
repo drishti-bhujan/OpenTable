@@ -1,0 +1,42 @@
+<div class="padding"></div>
+
+<div class="sign-up-form">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="jumbotron py-3">
+            <h1 class="display-4 text-center"> SIGN IN</h1>
+        </div>
+
+        <div class="form-group">
+            <input type="email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                placeholder="Email" />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="password" formControlName="password" placeholder="Password"
+                [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                <div *ngIf="f['password'].errors['minlength']">
+                    Password must be at least 6 charactesrs
+                </div>
+                <div *ngIf="f['password'].errors['maxlength']">
+                    Username must not exceed 40 characters
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-danger btn-block" type="submit" value="LOG IN">
+        </div>
+
+        <div class="padding-small"></div>
+
+    </form>
+
+</div>

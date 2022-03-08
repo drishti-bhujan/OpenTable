@@ -1,0 +1,29 @@
+.padding{
+    padding-bottom: 30px;
+}
+
+.padding-small{
+    padding-bottom: 30px;
+}
+
+.sign-up-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.sign-up-form form{
+    width:45%; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.sign-up-form form input[type=text], input[type=submit], input[type=password], input[type=email] {
+    width: 70%;
+    padding:12px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin:5px;
+}

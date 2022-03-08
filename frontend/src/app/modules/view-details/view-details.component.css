@@ -1,0 +1,82 @@
+.padding-small{
+    padding-bottom: 15px;
+}
+
+.padding{
+    padding-bottom: 30px;
+}
+
+.padding-medium{
+    padding-bottom: 150px;
+}
+
+.sign-up-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.sign-up-form .container-fluid .row{
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    text-align: center;
+}
+
+.sign-up-form form{
+    width: 100%;
+    margin:10px;
+    margin-top:20px;
+}
+
+.sign-up-form form .form-group{
+    margin-bottom: 20px;
+}
+
+.sign-up-form form input[type=date], input[type=text], input[type=time]{
+    width: 100%;
+    padding:12px; 
+    text-align: center;
+}
+
+
+.table-image td, th {
+    vertical-align: middle;
+    margin: 5px;
+}
+
+.table td button, .table th {
+    margin: 0.75rem;
+    
+}
+
+.update-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.update-form .container-fluid .row{
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    text-align: center;
+}
+
+.update-form form{
+    width: 70%;
+    margin:10px;
+    margin-top:20px;
+}
+
+.update-form form .form-group{
+    margin-bottom: 20px;
+}
+
+.update-form form input[type=date], input[type=text], input[type=time],input[type=submit]{
+    width: 100%;
+    padding:12px; 
+    text-align: center;
+}

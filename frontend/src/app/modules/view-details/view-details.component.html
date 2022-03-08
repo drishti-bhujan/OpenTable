@@ -1,0 +1,166 @@
+<div class="padding-small"></div>
+
+<div class="jumbotron py-3">
+    <h1 class="display-2 text-left">Where to next, {{fname}} ?</h1>
+</div>
+
+<div class="padding"></div>
+
+<div class="sign-up-form">
+    <form [formGroup]="formBook" (ngSubmit)="onBook()">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" formControlName="Location" placeholder="Location" class="form-control"
+                            [ngClass]="{ 'is-invalid': submittedBook && f['Location'].errors }" />
+                        <div *ngIf="submittedBook && f['Location'].errors" class="invalid-feedback">
+                            <div *ngIf="f['Location'].errors['required']">Location is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <input type="date" formControlName="Date" class="form-control"
+                            [ngClass]="{ 'is-invalid': submittedBook && f['Date'].errors }" />
+                        <div *ngIf="submittedBook && f['Date'].errors" class="invalid-feedback">
+                            <div *ngIf="f['Date'].errors['required']">Date is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <input type="time" formControlName="Time" class="form-control"
+                            [ngClass]="{ 'is-invalid': submittedBook && f['Time'].errors }" />
+                        <div *ngIf="submittedBook && f['Time'].errors" class="invalid-feedback">
+                            <div *ngIf="f['Time'].errors['required']">Time is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group" style="text-align: left;">
+                        <input class="btn btn-danger btn-block" type="submit" value="REGISTER NOW">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="padding-small"></div>
+
+    </form>
+</div>
+
+<div class="jumbotron py-3">
+    <h4 class="display-5 text-left">All Bookings</h4>
+</div>
+
+<div class="all-booking">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of data">
+                            <td>{{ book.date}}</td>
+                            <td>{{ book.time }}</td>
+                            <td>{{ book.location }}</td>
+                            <td>
+                                <button type="button" class="btn btn-success" (click)="open(content,book)"><i
+                                        class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger" (click)="opendel(delete,book)"><i
+                                        class="far fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="padding-medium"></div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Booking update</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="update-form">
+        <form [formGroup]="formUpdate" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <input type="text" formControlName="idUpdate" 
+                class="form-control" hidden/>
+            </div>
+
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" formControlName="locationUpdate" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f1['locationUpdate'].errors }" />
+                <div *ngIf="submitted && f1['locationUpdate'].errors" class="invalid-feedback">
+                    <div *ngIf="f1['locationUpdate'].errors['required']">Location is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" formControlName="dateUpdate" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f1['dateUpdate'].errors }" />
+                <div *ngIf="submitted && f1['dateUpdate'].errors" class="invalid-feedback">
+                    <div *ngIf="f1['dateUpdate'].errors['required']">Date is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Time</label>
+                <input type="time" formControlName="timeUpdate" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f1['timeUpdate'].errors }" />
+                <div *ngIf="submitted && f1['timeUpdate'].errors" class="invalid-feedback">
+                    <div *ngIf="f1['timeUpdate'].errors['required']">Time is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-dark">Save</button>
+                <button type="button" style="margin-left: 10px;" (click)="onReset()"
+                    class="btn btn-warning float-right">
+                    Reset
+                </button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+<ng-template #delete let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Booking update</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+
+        <p> <b> Are you sure you want to delete the booking {{this.locationDel}} 
+            on {{this.dateDel}} at {{this.timeDel}}? </b></p>
+
+        <p>All information associated to this booking will be permanently deleted. This operation can not be
+            undone.</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" 
+        (click)="deleteBooking(this.bookingDel)">Delete</button>
+    </div>
+</ng-template>
